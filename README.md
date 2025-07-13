@@ -1,44 +1,36 @@
 # 🎬 Movie Explorer
 
-A modern and responsive movie discovery web application built with **Vite**, **React**, **Tailwind CSS**, and integrated with the [TMDB API](https://developer.themoviedb.org/) to fetch and display the latest movie data.
+A sleek, modern, and responsive movie discovery web application built using **React**, **Vite**, and **Tailwind CSS**, powered by the [TMDB API](https://developer.themoviedb.org/). Easily search for movies, view popular picks, explore details, and enjoy a smooth UI.
 
 ---
 
 ## ✨ Features
 
-- 🔍 Search movies by title  
-- 🎥 Display popular, trending, and top-rated movies  
-- 📄 Detailed view of each movie (description, release date, rating, etc.)  
-- 📱 Fully responsive design using Tailwind CSS  
-- ⚡ Fast development with Vite  
+- 🔍 Search for movies by title  
+- 🎞️ Browse trending, popular, and top-rated films  
+- 📄 View detailed information (overview, rating, release date, etc.)  
+- ⚡ Super-fast build and hot-reload with Vite  
+- 💻 Responsive design using Tailwind CSS  
+- 🌐 Deployed and accessible live  
 
 ---
 
 ## 📸 Screenshots
 
-> Add your screenshots in the `/screenshots` folder and replace the links below.
+### 🎞️ Movie Cards Display  
+![Movie Cards](https://github.com/user-attachments/assets/5de734b2-f0da-44fe-a9c3-ecd4007262ff)
 
-### 🎞️ Movie Cards Display
+### 📄 Movie Details Page  
+![Movie Details](https://github.com/user-attachments/assets/01070a63-c922-4365-8ea9-25e2abfb92b7)
 
-![Movie Cards]<img width="1613" height="960" alt="Screenshot 2025-07-13 151930" src="https://github.com/user-attachments/assets/5de734b2-f0da-44fe-a9c3-ecd4007262ff" />
-
-
-### 📄 Movie Details Page
-
-![Movie Details]<img width="1691" height="962" alt="Screenshot 2025-07-13 152308" src="https://github.com/user-attachments/assets/01070a63-c922-4365-8ea9-25e2abfb92b7" />
-
-
-### 🔎 Search Functionality
-
-![Search Feature]<img width="1028" height="871" alt="Screenshot 2025-07-13 152221" src="https://github.com/user-attachments/assets/ea065226-b9a7-4336-9c87-88eba4349c45" />
-
+### 🔎 Search Functionality  
+![Search Feature](https://github.com/user-attachments/assets/ea065226-b9a7-4336-9c87-88eba4349c45)
 
 ---
 
 ## 🚀 Getting Started
 
-### 1. Clone the repo
-
+### 1. Clone the repository
 ```bash
 git clone https://github.com/yourusername/movie-explorer.git
 cd movie-explorer
