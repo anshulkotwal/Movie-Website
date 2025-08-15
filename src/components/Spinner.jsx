@@ -1,20 +1,184 @@
-import React from 'react'
+import React from 'react';
 
-const Spinner = () => {
-  return (
-    <div role="status">
-      <svg aria-hidden="true"
-           className="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-indigo-600"
-           viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
-          fill="currentColor"/>
-        <path
-          d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
-          fill="currentFill"/>
-      </svg>
-      <span className="sr-only">Loading...</span>
+const Spinner = () => (
+    <div className="flex justify-center items-center">
+        {/* Main spinner container with 3D perspective */}
+        <div className="relative w-16 h-16 perspective-1000">
+            {/* Original spinner maintained for compatibility */}
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 absolute top-2 left-2 opacity-0"></div>
+            
+            {/* Outer rotating ring with gradient */}
+            <div className="absolute inset-0 rounded-full border-4 border-transparent bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 animate-spin"
+                 style={{
+                     background: 'conic-gradient(from 0deg, #4f46e5, #7c3aed, #ec4899, #4f46e5)',
+                     borderRadius: '50%',
+                     mask: 'radial-gradient(circle at center, transparent 60%, black 61%)',
+                     WebkitMask: 'radial-gradient(circle at center, transparent 60%, black 61%)',
+                     animation: 'spin 2s linear infinite'
+                 }}>
+            </div>
+            
+            {/* Middle pulsing ring */}
+            <div className="absolute inset-1 rounded-full border-2 border-indigo-400 opacity-60"
+                 style={{
+                     animation: 'pulse 1.5s ease-in-out infinite alternate, spin 3s linear infinite reverse'
+                 }}>
+            </div>
+            
+            {/* Inner floating orbs */}
+            <div className="absolute inset-0 rounded-full">
+                {[...Array(6)].map((_, i) => (
+                    <div
+                        key={i}
+                        className="absolute w-2 h-2 bg-gradient-to-br from-white to-indigo-300 rounded-full shadow-lg"
+                        style={{
+                            top: '50%',
+                            left: '50%',
+                            transformOrigin: '0 0',
+                            transform: `rotate(${i * 60}deg) translateX(20px) translateY(-4px)`,
+                            animation: `orbit 2s linear infinite, float ${1 + i * 0.1}s ease-in-out infinite alternate`
+                        }}
+                    >
+                        <div className="w-full h-full bg-white rounded-full opacity-80 animate-ping"></div>
+                    </div>
+                ))}
+            </div>
+            
+            {/* Central glowing core */}
+            <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-4 h-4 bg-gradient-to-br from-white via-indigo-200 to-indigo-600 rounded-full shadow-lg"
+                     style={{
+                         animation: 'glow 2s ease-in-out infinite alternate, breathe 1s ease-in-out infinite alternate'
+                     }}>
+                    <div className="w-full h-full bg-white rounded-full opacity-60 animate-pulse"></div>
+                </div>
+            </div>
+            
+            {/* 3D floating particles */}
+            <div className="absolute inset-0 pointer-events-none">
+                {[...Array(8)].map((_, i) => (
+                    <div
+                        key={`particle-${i}`}
+                        className="absolute w-1 h-1 bg-indigo-400 rounded-full opacity-70"
+                        style={{
+                            top: '50%',
+                            left: '50%',
+                            transform: `rotate(${i * 45}deg) translateX(${25 + i * 2}px) translateY(-2px)`,
+                            animation: `sparkle ${2 + i * 0.2}s linear infinite, twinkle ${1 + i * 0.15}s ease-in-out infinite alternate`
+                        }}
+                    >
+                    </div>
+                ))}
+            </div>
+            
+            {/* Outer glow effect */}
+            <div className="absolute inset-0 rounded-full bg-indigo-600 opacity-20 blur-md animate-pulse"></div>
+            <div className="absolute inset-0 rounded-full bg-purple-500 opacity-10 blur-lg animate-pulse"
+                 style={{ animation: 'pulse 2s ease-in-out infinite alternate' }}>
+            </div>
+        </div>
+        
+        {/* Loading text with typewriter effect */}
+        <div className="ml-4 hidden sm:block">
+            <div className="text-indigo-600 font-medium text-sm tracking-wide"
+                 style={{
+                     animation: 'typewriter 2s steps(10) infinite, shimmer 2s linear infinite'
+                 }}>
+                Loading<span className="animate-pulse">...</span>
+            </div>
+        </div>
+        
+        {/* Background ambient effect */}
+        <div className="absolute inset-0 -z-10 rounded-full bg-gradient-radial from-indigo-100 via-transparent to-transparent opacity-30 animate-pulse"
+             style={{ transform: 'scale(3)' }}>
+        </div>
+        
+        {/* CSS Animations */}
+        <style>{`
+            @keyframes orbit {
+                0% { transform: rotate(0deg) translateX(20px) translateY(-4px); }
+                100% { transform: rotate(360deg) translateX(20px) translateY(-4px); }
+            }
+            
+            @keyframes float {
+                0% { transform: rotate(var(--rotation, 0deg)) translateX(20px) translateY(-4px) scale(1); }
+                100% { transform: rotate(var(--rotation, 0deg)) translateX(20px) translateY(-4px) scale(1.2); }
+            }
+            
+            @keyframes glow {
+                0% { 
+                    box-shadow: 0 0 5px rgba(79, 70, 229, 0.5), 0 0 10px rgba(79, 70, 229, 0.3), 0 0 15px rgba(79, 70, 229, 0.1);
+                    transform: scale(1);
+                }
+                100% { 
+                    box-shadow: 0 0 10px rgba(79, 70, 229, 0.8), 0 0 20px rgba(79, 70, 229, 0.5), 0 0 30px rgba(79, 70, 229, 0.2);
+                    transform: scale(1.1);
+                }
+            }
+            
+            @keyframes breathe {
+                0% { transform: scale(1); opacity: 0.8; }
+                100% { transform: scale(1.05); opacity: 1; }
+            }
+            
+            @keyframes sparkle {
+                0% { 
+                    transform: rotate(0deg) translateX(25px) translateY(-2px) scale(1);
+                    opacity: 0.7;
+                }
+                50% { 
+                    transform: rotate(180deg) translateX(25px) translateY(-2px) scale(1.5);
+                    opacity: 1;
+                }
+                100% { 
+                    transform: rotate(360deg) translateX(25px) translateY(-2px) scale(1);
+                    opacity: 0.7;
+                }
+            }
+            
+            @keyframes twinkle {
+                0% { opacity: 0.3; transform: scale(0.8); }
+                100% { opacity: 1; transform: scale(1.2); }
+            }
+            
+            @keyframes typewriter {
+                0%, 50% { opacity: 1; }
+                51%, 100% { opacity: 0.3; }
+            }
+            
+            @keyframes shimmer {
+                0% { background-position: -200% 0; }
+                100% { background-position: 200% 0; }
+            }
+            
+            .perspective-1000 {
+                perspective: 1000px;
+            }
+            
+            /* Mobile optimizations */
+            @media (max-width: 640px) {
+                .orbit-particle {
+                    transform: scale(0.8);
+                }
+            }
+            
+            /* Enhanced glow effects for modern browsers */
+            @supports (backdrop-filter: blur(10px)) {
+                .enhanced-glow {
+                    backdrop-filter: blur(2px);
+                }
+            }
+            
+            /* Reduced motion for accessibility */
+            @media (prefers-reduced-motion: reduce) {
+                * {
+                    animation-duration: 0.01ms !important;
+                    animation-iteration-count: 1 !important;
+                    transition-duration: 0.01ms !important;
+                }
+            }
+        `}</style>
     </div>
-  )
-}
+);
+
 export default Spinner;

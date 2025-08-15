@@ -1,15 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import App from './App.jsx';
-import MovieDetail from './pages/MovieDetail.jsx'; // we'll create this
-import './index.css';
+import App from './App.jsx'; // Import the main App component
+import { AuthProvider } from './components/AuthContext'; // Correctly import AuthProvider
+import { BrowserRouter } from 'react-router-dom'; // Import BrowserRouter
+import './index.css'; // Assuming you have an index.css
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <Router>
-    <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="/movie/:imdbID" element={<MovieDetail />} />
-    </Routes>
-  </Router>
+  <React.StrictMode>
+    <BrowserRouter>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </BrowserRouter>
+  </React.StrictMode>,
 );
